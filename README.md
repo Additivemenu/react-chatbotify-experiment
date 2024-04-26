@@ -1,40 +1,50 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+
+
+
 ## Getting Started
 
-First, run the development server:
+First,  install all dependencies
+
+```shell
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Then, you will see error 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```shell
+Import trace for requested module:
+./node_modules/react-chatbotify/dist/react-chatbotify.css
+./node_modules/react-chatbotify/dist/index.js
+ ⨯ ./node_modules/react-chatbotify/dist/react-chatbotify.css
+Global CSS cannot be imported from within node_modules.
+Read more: https://nextjs.org/docs/messages/css-npm
+Location: node_modules/react-chatbotify/dist/index.js
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+file changes made since creating the Next.js application:
 
-To learn more about Next.js, take a look at the following resources:
++ ChatBot component is placed in the home page in  `src/pages/index.tsx` (lazy loading is applied)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
++ `react-chatbotify.css` has been copied into `src/pages` and injected into project in `src/pages/_app.tsx`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next step:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
++ Comment out the importing of global css lines within `index` files in react-chatbotify within `node_modules` directory, but same error still popping out
+
